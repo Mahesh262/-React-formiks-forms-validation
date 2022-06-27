@@ -1,23 +1,38 @@
-import React, { useEffect, useState } from "react";
-import LoginForm from "./Ecart/LoginForm";
-import { auth } from "./Ecart/Firebase";
-import Home from "./Ecart/Home";
+// import React from "react";
+// import Products from "./ShoppingCart/Products";
+// import CartView from "./ShoppingCart/CartView";
+// import { Routes, Route } from "react-router";
+// const App = () => {
+//   return (
+//     <>
+//       <Routes>
+//         <Route path="/" element={<Products />} />
+//         <Route path="/CartView/:id" element={<CartView />} />
+//       </Routes>
+//     </>
+//   );
+// };
+
+// export default App;
+
+import React from "react";
+import { Routes, Route } from "react-router";
+import Signup from "./Signup";
+import SignIn from "./SignIn";
+import Deatils from "./Deatils";
+import Errror from "./Errror";
+import Header from "./Header";
 const App = () => {
-  const [presentUser, setPresentuser] = useState(null);
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        setPresentuser({
-          uid: user?.uid,
-          email: user?.email,
-        });
-      } else {
-        return setPresentuser(null);
-      }
-    });
-  }, []);
   return (
-    <>{presentUser ? <Home presentUser={presentUser} /> : <LoginForm />}</>
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Signup />} />
+        <Route path="/SignIn" element={<SignIn />} />
+        <Route path="/Deatils" element={<Deatils />} />
+        <Route path="*" element={<Errror />} />
+      </Routes>
+    </>
   );
 };
 
