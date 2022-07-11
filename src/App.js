@@ -26,6 +26,7 @@ const App = () => {
   return (
     <>
       <Header />
+      <h2>Hello</h2>
       <Routes>
         <Route path="/" element={<Signup />} />
         <Route path="/SignIn" element={<SignIn />} />
